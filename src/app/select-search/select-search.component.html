@@ -1,1 +1,11 @@
-<p>select-search works!</p>
+<form [formGroup]="form">
+    <mat-form-field appearance="outline" [ngClass]="{'mat-form-field-invalid': error}" (click)="filtrar($event.target)">
+      <input matInput formControlName="userInput" [matAutocomplete]="auto" [placeholder]="placeholder">    
+      <mat-hint *ngIf="error" class="mt-1 text-danger">{{error}}</mat-hint>
+    </mat-form-field>
+  </form>
+  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+    <mat-option *ngFor="let item of (elements | async)" [value]="item" (onSelectionChange)="selectElement(item)">
+      <span>{{ item.nome }}</span>
+    </mat-option>
+  </mat-autocomplete>

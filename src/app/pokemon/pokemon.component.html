@@ -1,0 +1,5 @@
+
+
+<app-select-search #selectSearchComponent [elements]="filteredPokemons" [placeholder]="'Selecione um pokémon'"
+[selectedElement]="item.get('pokemon').value" (getElements)="pokemonFilter($event)"
+(elementSelected)="selectedPokemon($event)"></app-select-search>
