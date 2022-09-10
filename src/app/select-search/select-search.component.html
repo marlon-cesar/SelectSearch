@@ -6,6 +6,6 @@
   </form>
   <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
     <mat-option *ngFor="let item of (elements | async)" [value]="item" (onSelectionChange)="selectElement(item)">
-      <span>{{ item.nome }}</span>
+      <span>{{ item.name }}</span>
     </mat-option>
   </mat-autocomplete>

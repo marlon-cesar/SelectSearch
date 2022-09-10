@@ -45,7 +45,7 @@ export class SelectSearchComponent implements OnInit {
   }
 
   displayFn(value: any) {
-    return value ? value.nome : '';
+    return value ? value.name : '';
   }
 
   selectElement(element: any) {

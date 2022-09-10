@@ -1,5 +1,9 @@
-
-
 <app-select-search #selectSearchComponent [elements]="filteredPokemons" [placeholder]="'Selecione um pokémon'"
-[selectedElement]="item.get('pokemon').value" (getElements)="pokemonFilter($event)"
-(elementSelected)="selectedPokemon($event)"></app-select-search>
+    [selectedElement]="form.get('pokemon')!.value" (getElements)="pokemonFilter($event)"
+    (elementSelected)="selectedPokemon($event)"></app-select-search>
+
+<div *ngIf="selectedPokemons">
+    <div *ngFor="let pokemon of selectedPokemons">
+        <h3> {{pokemon.order}} - {{pokemon.name}}</h3>
+    </div>
+</div>
