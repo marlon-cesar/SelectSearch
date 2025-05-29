@@ -18,36 +18,37 @@ import { Country } from '../models/country.model';
     MatButtonModule
   ]
 })
-export class AppComponent implements AfterViewInit  {
-  
+export class AppComponent implements AfterViewInit {
+
   form: FormGroup
 
-  
+
   @ViewChild('countrySelectSearch') countrySelectSearch: CountrySelectSearchComponent
 
   constructor(private formBuilder: FormBuilder) {
     this.form = this.formBuilder.group({
       firstName: [''],
       lastName: [''],
-      country: ['']
+      country: ['', Validators.required]
     });
   }
 
-  ngAfterViewInit(): void {    
-    const selectedCountry: Country ={
-      name:{ common: 'Brazil'},
+  ngAfterViewInit(): void {
+    const selectedCountry: Country = {
+      name: { common: 'Brazil' },
       cca2: 'BR'
     }
 
     this.countrySelectSearch.selectCountry(selectedCountry)
   }
 
-  get countryFormControl(): FormControl{
+  get countryFormControl(): FormControl {
     return this.form.get('country') as FormControl
   }
 
   onSubmit() {
-    console.log(this.form.value);
+    if (this.form.valid)
+      console.log(this.form.value);
   }
 
 }
